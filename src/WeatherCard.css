@@ -1,0 +1,54 @@
+.containerResult {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+    background-color: rgba(167, 217, 250, 0.507);
+    border-radius: 50px;
+    width: fit-content;
+    padding: 35px;
+    margin-top: 5px;
+}
+
+.animation {
+    column-span: 2;
+    grid-column: 2;
+    margin: 0px;
+    height: 200px;
+    width: 200px;
+}
+
+
+
+h2.gridItem {
+    grid-row: 1;
+}
+
+#errorLabel {
+    justify-self: center;
+    color: white;
+    text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+    .containerResult {
+        padding: 10px;
+        margin: 15px;
+        grid-template-columns: 1fr;
+        width: max-content;
+    }
+
+    .animation {
+        column-span: none;
+        grid-column: 1;
+        height: 140px;
+        width: 140px;
+
+    }
+
+    .gridItem {
+        margin-left: 55px;
+        margin-right: 55px;
+    }
+}

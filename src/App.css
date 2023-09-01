@@ -1,0 +1,32 @@
+#logoW {
+  color: rgb(255, 144, 71);
+}
+
+#title {
+  color: white;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  margin: 15px;
+}
+
+.searchBarContainer {
+  display: grid;
+  margin: 20px;
+
+}
+
+#searchBar {
+  border: 0px;
+  padding: 10px;
+  border-radius: 7px;
+  margin: 5px;
+}
+
+#searchButton {
+  background-color: rgba(96, 135, 138, 0.959);
+  border: 0px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 3px;
+}
