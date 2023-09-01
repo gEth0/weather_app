@@ -18,7 +18,22 @@ function App() {
 
       </div>
       {weatherInfo && <WeatherCard weatherInfo={weatherInfo} />}
-    </div >
+
+      <footer>
+
+        <div class="footer-social">
+          <p> <span id='logoW'>W</span>here can you find me?</p>
+          <a href="https://it.fiverr.com/pygabbo" target="_blank" rel="noreferrer"> Fiverr</a>
+          <a href="https://github.com/gEth0" target="_blank" rel="noreferrer"> GitHub</a>
+          <a href="https://stackoverflow.com/users/19114392/geth0" target="_blank" rel="noreferrer">Stack Overflow</a>
+
+          <div class="footer-text">
+            Developed by <span>gEth0</span> <br /> using <a href="https://openweathermap.org/">OpenWeather</a>'s API <br /> Copyright 2023 <br />
+            <a href="https://gEth0.github.io/portfolio">gEth0.github.io</a>
+          </div>
+        </div >
+      </footer>
+    </div>
   );
 }
 

@@ -11,7 +11,7 @@ import mist from "./animations/mist.json"
 const searchWeather = async (cityName, setCityName, setWeatherInfo) => {
     if (cityName === "") return setWeatherInfo({ "ERROR": "You must type something" })
 
-    const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&lang=it&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+    const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
     setCityName("")
 
     fetch(BASE_URL).then((response) => response.json()).then((object) => {
