@@ -23,13 +23,15 @@
   margin: 5px;
 }
 
-#searchButton {
+.button {
   background-color: rgba(96, 135, 138, 0.959);
   border: 0px;
   padding: 5px;
   margin: 5px;
   border-radius: 3px;
 }
+
+
 
 .footer-social {
   bottom: 0;

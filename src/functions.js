@@ -38,6 +38,48 @@ const searchWeather = async (cityName, setCityName, setWeatherInfo) => {
 
 }
 
+const getLatitudeAndLong = () => {
+    if (navigator.geolocation) {
+        var v = navigator.geolocation.getCurrentPosition((pos) => {
+            console.log(pos)
+            let lat = pos.coords.latitude;
+            let long = pos.coords.longitude;
+            return { "LAT": lat, "LONG": long };
+        })
+
+    }
+    return { "ERROR": "Geolocation is not supported" }
+
+}
+
+const searchWeatherByLocation = async (setWeatherInfo) => {
+
+    let coords = getLatitudeAndLong();
+
+    if (coords.ERROR) return setWeatherInfo({ "ERROR": coords.ERROR })
+
+    const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.LAT}&lon=${coords.LONG}&appid=${process.env.REACT_APP_API_KEY}`
+    fetch(BASE_URL).then((response) => response.json()).then((object) => {
+
+        if (object.cod === "404") return setWeatherInfo({ "ERROR": "City was not found" })
+        const data = {
+            "city_name": object.name,
+            "weather": object.weather[0].main,
+            "description": object.weather[0].description,
+            "weather_code": object.weather[0].id,
+            "temperatures": {
+                "temp": object.main.temp,
+                "perceived": object.main.feels_like,
+                "min": object.main.temp_min,
+                "max": object.main.temp_max,
+                "hum": `${object.main.humidity}%`
+            }
+        }
+
+        return setWeatherInfo(data)
+    })
+
+}
 const selectAnimation = (code) => {
     switch (true) {
         case (code === 804):
@@ -62,4 +104,4 @@ const selectAnimation = (code) => {
 }
 
 
-export { searchWeather, selectAnimation };
+export { searchWeather, selectAnimation, searchWeatherByLocation };
