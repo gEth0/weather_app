@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { searchWeather, searchWeatherByLocation } from './functions';
+import { searchWeather, getLatitudeAndLong } from './functions';
 import './App.css';
 import WeatherCard from './WeatherCard';
 
@@ -15,7 +15,7 @@ function App() {
       <div className="searchBarContainer" id="containerSearch">
         <input type="text" id="searchBar" value={cityName} placeholder='Type here...' onChange={(e) => { setCityName(e.target.value) }} />
         <button className='button' id="searchButton" onClick={() => searchWeather(cityName, setCityName, setWeatherInfo)}> <b>Search</b> </button>
-        <button className='button' id="positionButton" onClick={() => searchWeatherByLocation(setWeatherInfo)}> <b>Position</b> </button>
+        <button className='button' id="positionButton" onClick={() => getLatitudeAndLong(setWeatherInfo)}> <b>Position</b> </button>
 
       </div>
       {weatherInfo && <WeatherCard weatherInfo={weatherInfo} />}

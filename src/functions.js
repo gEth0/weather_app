@@ -38,23 +38,24 @@ const searchWeather = async (cityName, setCityName, setWeatherInfo) => {
 
 }
 
-const getLatitudeAndLong = () => {
+const getLatitudeAndLong = (searchWeatherInfo) => {
+
     if (navigator.geolocation) {
-        var v = navigator.geolocation.getCurrentPosition((pos) => {
-            console.log(pos)
+
+        navigator.geolocation.getCurrentPosition((pos) => {
             let lat = pos.coords.latitude;
             let long = pos.coords.longitude;
-            return { "LAT": lat, "LONG": long };
+            return searchWeatherByLocation(searchWeatherInfo, { "LAT": lat, "LONG": long })
         })
-
     }
-    return { "ERROR": "Geolocation is not supported" }
+
+    return searchWeatherByLocation(searchWeatherInfo, { "ERROR": "Geolocation is not supported" })
+
+
 
 }
 
-const searchWeatherByLocation = async (setWeatherInfo) => {
-
-    let coords = getLatitudeAndLong();
+const searchWeatherByLocation = async (setWeatherInfo, coords) => {
 
     if (coords.ERROR) return setWeatherInfo({ "ERROR": coords.ERROR })
 
@@ -89,19 +90,19 @@ const selectAnimation = (code) => {
         case (code > 800 && code < 804):
             return sunCloudy;
         case (code > 199 && code < 299):
-            return thunderstorm.json
+            return thunderstorm;
         case (code > 599 && code < 699):
-            return snow.json
+            return snow;
         case (code > 299 && code < 399):
-            return drizzle.json
+            return drizzle;
         case (code > 499 && code < 599):
-            return rain.json
+            return rain;
         case (code > 699 && code < 799):
-            return mist.json
+            return mist;
         default:
             return
     }
 }
 
 
-export { searchWeather, selectAnimation, searchWeatherByLocation };
+export { searchWeather, selectAnimation, searchWeatherByLocation, getLatitudeAndLong };
