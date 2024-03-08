@@ -6,3 +6,5 @@
 4) Create .env file in the root of the project
 5) Write : `REACT_APP_API_KEY = YOUR API KEY` in the .env file just created
 6) Finally run the project with `npm start`
+## Or use the site version :
+Go to [Weather App Site](https://gEth0.github.io/weather_app)
